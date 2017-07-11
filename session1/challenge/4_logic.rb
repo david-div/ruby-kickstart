@@ -10,4 +10,15 @@
 # grade(15, true)   # => "B"
 
 def grade(num_books, reads_books)
+    
+    grades = if num_books < 10
+                "D"
+            elsif num_books.between?(9, 21) # <= 20 as it would already have to
+                "C"                         # greater than 10    
+            else
+                "B"
+            end
+            
+   reads_books == true ? grades.tr("DCB","CBA") : grades  # .next for desending only
+    
 end
