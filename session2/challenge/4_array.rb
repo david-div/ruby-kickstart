@@ -7,3 +7,14 @@
 # get_squares [25, 4, 9, 6, 50, 16, 5] # => [4, 5]
 
 # This time you will have to define the method, it's called: get_squares
+
+def get_squares(arr)
+    arr.sort.select { |x| arr.include?(x * x) }
+end
+
+=begin
+p get_squares [9]                      # => []
+p get_squares [9,3]                    # => [3]
+p get_squares [9,3,81]                 # => [3, 9]
+p get_squares [25, 4, 9, 6, 50, 16, 5] # => [4, 5]
+=end
