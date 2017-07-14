@@ -16,6 +16,50 @@
 #      end
 
 
+require 'date'
+
+class User
+  attr_accessor :username, :blogs
+
+  def initialize(username)
+    self.username = username
+    self.blogs    = []
+  end
+
+  def add_blog(date, text)
+    added_blog = Blog.new(date, self, text) # creating a new instance of the Blog class
+    blogs << added_blog                     # pushing it into the blogs array
+    self.blogs = blogs.sort_by { |blog| blog.date }.reverse  # sorting by date
+    added_blog                              # calling the new blog object
+  end
+end
+
+
+
+class Blog
+  attr_accessor :date, :user, :text
+
+  def initialize(date, user, text)
+    @date = date                    # same as self.date
+    @user = user
+    @text = text
+  end
+
+  def summary
+    text.split[0..9].join(' ')
+  end
+
+  def entry
+    "#{user.username} #{date}\n#{text}"
+  end
+
+  def ==(other)
+    date   == other.date &&
+      user == other.user &&
+      text == other.text
+  end
+end
+
 
 # ==========  EXAMPLE  ==========
 #
@@ -63,4 +107,3 @@
 
 # date docs are at: http://ruby-doc.org/core/classes/Date.html
 # don't spend too much time worrying about them :)
-require 'date'
