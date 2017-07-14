@@ -6,7 +6,7 @@
 
 def alternate_words(str)
     
-    arr = str.split(' ')
+    arr = str.delete('!@$#%^&*()=_+[]:;,./<>?\\|').gsub('-',' ').split(' ') # \\|' not between words?
     
     arr.values_at( * arr.each_index.select { | i | i.even? } )
 

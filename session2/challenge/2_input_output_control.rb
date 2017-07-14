@@ -27,13 +27,15 @@ def hi_hi_goodbye
     
     break if number == "bye"
     
-    puts "#{"hi " * number.to_i}".chomp
+    puts "#{"hi " * number.to_i}".chop
     
 end
 
     puts "goodbye"
     
 end
+
+# hi_hi_goodbye
 
 # hi_hi_goodbye
 
