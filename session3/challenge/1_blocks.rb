@@ -3,3 +3,8 @@
 #
 # reverse_map(1, 2, 3) { |i| i * 2 }      # => [6, 4, 2]
 
+def reverse_map(*num,&block)  # unsure of the amount of arguments hence *
+    num.reverse.map(&block)   # 
+end
+
+p reverse_map(1, 2, 3) { |i| i * 2 }

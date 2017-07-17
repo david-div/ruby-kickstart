@@ -17,3 +17,30 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+# every two elements are represented by true or false
+# The very first parameter will not be part of this set
+
+def match_maker(opposites_attract, *elements) # * will create an array
+    to_return = []
+    elements.each_slice 2 do |first, last| # slicing an array into arrays of 2
+        first  = !!first                   # boolean
+        last   = !!last                    # boolean
+        result = if opposites_attract       
+                    first != last
+                else
+                    first == last
+                end
+        to_return << result
+    end
+    to_return
+end
+
+p match_maker false, true,  true                # => [true]
+p match_maker true,  true,  true                # => [false]
+p match_maker true,  false, false               # => [false]
+p match_maker true,  false, true                # => [true]
+p match_maker true,  true,  false               # => [true]
+p match_maker true,  true,  true, false, true   # => [false, true]
+p match_maker true,  true,  true, false, nil    # => [false, false]
+p match_maker true,  true,  true, true, nil     # => [false, true]
+p match_maker true,  true,  true, 0, nil        # => [false, true]
